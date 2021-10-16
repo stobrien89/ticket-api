@@ -13,3 +13,18 @@ router.post('/', async (req, res) => {
         })
     }
 })
+
+//Read endpoint (lists all tickets)
+router.get('/', async (req, res) => {
+    try {
+        const allTickets = await Ticket.find({});
+        res.status(200).json(allTickets);
+    }catch(err) {
+        console.error(err);
+        res.status(404).json({
+            message: error.message
+        })
+    }
+})
+
+module.exports = router;
