@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require('cors');
 const PORT = process.env.PORT || 8000;
+const ticketsController = require('./controllers/tickets')
 
 //Mongoose connection
 const MONGO_URI = process.env.MONGO_URI;
@@ -21,5 +22,6 @@ db.on('open', () => {
 
 app.use(express.json());
 app.use(cors());
+app.use('/api/tickets', ticketsController)
 
 app.listen(PORT, () => {console.log (`listening on port ${PORT}`)})
