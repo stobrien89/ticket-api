@@ -27,4 +27,17 @@ router.get('/', async (req, res) => {
     }
 })
 
+//Update endpoint
+router.put('/:id', async (req, res) => {
+    try {
+        const ticket = await Ticket.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        res.status(200).json(ticket);
+    }catch(err) {
+        console.error(err);
+        res.status(400).json({
+            message: err.message
+        })
+    }
+})
+
 module.exports = router;
