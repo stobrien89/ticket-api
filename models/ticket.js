@@ -8,3 +8,4 @@ const ticketSchema = new Schema ({
 });
 
 module.exports = model('Ticket', ticketSchema);
+

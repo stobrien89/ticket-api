@@ -1,6 +1,50 @@
 const Ticket = require('../models/ticket');
 const router = require('express').Router();
 
+//Seed endpoint
+router.get('/seed', async (req, res) => {
+    try {
+        const createdTickets = await Ticket.create(
+            [
+                {
+                    title: 'I don\'t understand.',
+                    source: 'GitHub',
+                    assignee: 'stobrien89',
+                    tags: ['guidance', 'needs-triage'] 
+                },
+                {
+                    title: 'I don\'t understand.',
+                    source: 'GitHub',
+                    assignee: 'stobrien89',
+                    tags: ['guidance', 'needs-triage'] 
+                },
+                {
+                    title: 'I don\'t understand.',
+                    source: 'GitHub',
+                    assignee: 'stobrien89',
+                    tags: ['guidance', 'needs-triage'] 
+                },
+                {
+                    title: 'I don\'t understand.',
+                    source: 'GitHub',
+                    assignee: 'stobrien89',
+                    tags: ['guidance', 'needs-triage'] 
+                },
+                {
+                    title: 'I don\'t understand.',
+                    source: 'GitHub',
+                    assignee: 'stobrien89',
+                    tags: ['guidance', 'needs-triage'] 
+                }, 
+            ]
+        );
+        res.status(200).json(createdTickets);
+    } catch(err) {
+        console.error(err);
+    }
+})
+
+
 //Create endpoint
 router.post('/', async (req, res) => {
     try {
